@@ -1983,39 +1983,3 @@ body {
     opacity: 1;
   }
 }
-
-.carta {
-  width: 250px;
-  height: 150px;
-  background-color: white;
-  border: 2px solid #ff6767;
-  border-radius: 10px;
-  text-align: center;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
-
-.corazon {
-  font-size: 50px;
-  color: red;
-}
-
-.mensaje {
-  margin-top: 10px;
-  font-size: 16px;
-  color: #333;
-}
-
-.texto-abajo {
-  font-size: 14px;
-  color: #999;
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  left: 0;
-}
-
-.carta:hover {
-  transform: scale(1.05);
-}
