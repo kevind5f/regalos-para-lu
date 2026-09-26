@@ -1,0 +1,400 @@
+/* ===== RESET Y BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.container {
+    width: 100%;
+    max-width: 450px;
+    padding: 24px;
+    perspective: 1000px;
+}
+
+.content {
+    text-align: center;
+    position: relative;
+}
+
+/* ===== MENSAJE INICIAL ===== */
+.initial-message {
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+    color: white;
+    font-weight: 600;
+    margin-bottom: 24px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeInDown 0.8s ease-out;
+}
+
+/* ===== DIBUJO ===== */
+.dibujo {
+    margin: 20px 0;
+    animation: fadeIn 1s ease-out 0.3s backwards;
+}
+
+.dibujo img {
+    max-width: 75%;
+    height: auto;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
+    transition: transform 0.3s ease;
+}
+
+.dibujo img:hover {
+    transform: scale(1.05);
+}
+
+/* ===== BOTÓN PRINCIPAL ===== */
+.boton {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(238, 90, 111, 0.4);
+    transition: all 0.3s ease;
+    animation: fadeIn 1s ease-out 0.6s backwards;
+}
+
+.boton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(238, 90, 111, 0.5);
+}
+
+.boton:active {
+    transform: translateY(0);
+}
+
+/* ===== CARTA ICON ===== */
+.carta-icon {
+    display: none;
+    font-size: 6rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    animation: bounceIn 0.8s ease-out;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+}
+
+.carta-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.carta-icon:active {
+    transform: scale(0.95);
+}
+
+/* ===== HINT ===== */
+.hint {
+    display: none;
+    margin-top: 16px;
+    font-size: 1rem;
+    color: white;
+    font-style: italic;
+    animation: fadeIn 0.8s ease-out 0.3s backwards;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== MENSAJE FINAL ===== */
+.mensajeFinal {
+    display: none;
+    margin-top: 24px;
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    max-height: 65vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: scaleIn 0.6s ease-out;
+}
+
+.mensajeFinal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.mensajeFinal::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+    }
+
+.mensajeFinal::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 10px;
+}
+
+.textoCarta {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: left;
+    color: #333;
+    white-space: pre-line;
+}
+
+.textoPd {
+    margin-top: 20px;
+    font-weight: 700;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #ff6b6b;
+}
+
+/* ===== ESTADOS (STEPS) ===== */
+#step2:checked ~ .container .dibujo,
+#step2:checked ~ .container .boton,
+#step2:checked ~ .container .initial-message {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+#step2:checked ~ .container .carta-icon,
+#step2:checked ~ .container .hint {
+    display: block;
+}
+
+#step3:checked ~ .container .carta-icon,
+#step3:checked ~ .container .hint {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+#step3:checked ~ .container .mensajeFinal {
+    display: block;
+}
+
+/* OCULTAR ELEMENTOS EN STEP 2 Y 3 */
+#step2:checked ~ .container .boton,
+#step3:checked ~ .container .boton {
+    display: none;
+}
+
+#step2:checked ~ .container .initial-message,
+#step3:checked ~ .container .initial-message {
+    display: none;
+}
+
+#step3:checked ~ .container .dibujo {
+    display: none;
+}
+
+
+/* ===== MENSAJE FINAL ===== */
+.mensajeFinal {
+    display: none;
+    margin-top: 24px;
+    background: linear-gradient(145deg, #fff8f0 0%, #ffe9e9 100%);
+    border-radius: 20px;
+    padding: 32px;
+    max-height: 65vh;
+    overflow-y: auto;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    animation: scaleIn 0.6s ease-out;
+    position: relative;
+    border: 3px solid rgba(238, 90, 111, 0.2);
+}
+
+/* Decoración de corazones en las esquinas */
+.mensajeFinal::before,
+.mensajeFinal::after {
+    content: '💕';
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.15;
+    animation: heartBeat 2s ease-in-out infinite;
+}
+
+.mensajeFinal::before {
+    top: 16px;
+    left: 16px;
+    animation-delay: 0.5s;
+}
+
+.mensajeFinal::after {
+    bottom: 16px;
+    right: 16px;
+}
+
+.mensajeFinal::-webkit-scrollbar {
+    width: 10px;
+}
+
+.mensajeFinal::-webkit-scrollbar-track {
+    background: rgba(255, 182, 193, 0.2);
+    border-radius: 10px;
+}
+
+.mensajeFinal::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.mensajeFinal::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ee5a6f, #ff6b6b);
+}
+
+.textoCarta {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    text-align: left;
+    color: #4a4a4a;
+    white-space: pre-line;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 1;
+}
+
+.textoCarta::first-letter {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ff6b6b;
+    float: left;
+    line-height: 0.8;
+    margin: 8px 8px 0 0;
+    text-shadow: 2px 2px 4px rgba(238, 90, 111, 0.2);
+}
+
+.textoPd {
+    margin-top: 24px;
+    padding: 16px;
+    font-weight: 700;
+    text-align: center;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.textoPd::before {
+    content: '✨';
+    margin-right: 8px;
+}
+
+.textoPd::after {
+    content: '✨';
+    margin-left: 8px;
+}
+
+/* ===== ANIMACIÓN DE CORAZÓN ===== */
+@keyframes heartBeat {
+    0%, 100% {
+    transform: scale(1);
+    }
+    50% {
+    transform: scale(1.2);
+    }
+}
+
+@keyframes glow {
+    from {
+    filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.3));
+    }
+    to {
+    filter: drop-shadow(0 0 15px rgba(255, 107, 107, 0.6));
+    }
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeIn {
+    from {
+    opacity: 0;
+    } 
+    to {
+    opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+    opacity: 1;
+    }
+    to {
+    opacity: 0;
+    display: none;
+        }
+}
+
+@keyframes fadeInDown {
+    from {
+    opacity: 0;
+    transform: translateY(-20px);
+    }
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+    opacity: 0;
+    transform: scale(0.3);
+    }
+    50% {
+    transform: scale(1.05);
+    }   
+    70% {
+    transform: scale(0.9);
+    }
+    100% {
+    opacity: 1;
+    transform: scale(1);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+    opacity: 0;
+    transform: scale(0.9);
+    }
+    to {
+    opacity: 1;
+    transform: scale(1);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+    .container {
+    padding: 16px;
+    }
+
+    .boton {
+    padding: 12px 24px;
+    font-size: 1rem;
+    }
+
+    .carta-icon {
+    font-size: 5rem;
+    }
+
+    .mensajeFinal {
+    padding: 20px;
+    max-height: 70vh;
+    }
+
+    .textoCarta {
+    font-size: 0.95rem;
+    }
+}
