@@ -1,28 +1,60 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <title>Flower</title>
-</head>
-<body>
+    <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+            <title>Para ti, mi amor 💕</title>
+            <meta name="description" content="Feliz San Valentín">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="styles.css">
+            <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><text y=%2213%22 font-size=%2213%22>💕</text></svg>">
+        </head>
+        <body>
+            <a href="../" class="volver-raiz">← atrás</a>
+            <main class="corazon">
+                <div class="glow" aria-hidden="true"></div>
+                <img src="cora5.png" alt="Nuestra foto" class="flower-image zoom-animation">
+                <h1 class="text-above">Feliz San Valentín</h1>
+                <p class="text-below">De mi para ti</p>
+                <div class="player">
+                    <button class="play-btn" id="playBtn" aria-label="Reproducir canción">
+                        <svg class="icon-play" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+                        <svg class="icon-pause" viewBox="0 0 24 24" width="18" height="18" hidden><path fill="currentColor" d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+                    </button>
+                    <div class="bars" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                    <audio id="cancion" src="cancion2.mp3" preload="metadata"></audio>
+                </div>
+            </main>
+            <script>
+                var btn = document.getElementById('playBtn');
+                var audio = document.getElementById('cancion');
+                var player = document.querySelector('.player');
+                var playIcon = btn.querySelector('.icon-play');
+                var pauseIcon = btn.querySelector('.icon-pause');
 
-<div class="corazon">
-    <img src="cora5.png" alt="Flower Image" class="flower-image zoom-animation">
+                btn.addEventListener('click', function () {
+                    if (audio.paused) {
+                    audio.play();
+                    playIcon.hidden = true;
+                    pauseIcon.hidden = false;
+                    player.classList.add('playing');
+                    } else {
+                    audio.pause();
+                    playIcon.hidden = false;
+                    pauseIcon.hidden = true;
+                    player.classList.remove('playing');
+                    }
+                });
 
-    <div class="text-above">Feliz San Valentín</div>
-    <div class="text-below">De mi para ti</div>
-    <div class="hola">
-        <audio controls>
-            <source src="cancion2.mp3" type="audio/mp3">
-            Tu navegador no soporta el elemento de audio.
-        </audio>
-    </div>
-</div>
-
-</body>
-</html>
+                audio.addEventListener('ended', function () {
+                    playIcon.hidden = false;
+                    pauseIcon.hidden = true;
+                    player.classList.remove('playing');
+                });
+            </script>
+        </body>
+    </html>
